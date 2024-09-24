@@ -1,0 +1,40 @@
+.switch-container {
+  position: relative;
+}
+
+.switch-input {
+  display: none; /* Ẩn input checkbox */
+
+  &:checked {
+    + .switch-label {
+      background-color: var(--primary);
+
+      &::before {
+        transform: translateX(20px);
+      }
+    }
+  }
+}
+
+.switch-label {
+  display: block;
+  width: 40px;
+  height: 20px;
+  background-color: #757575;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s;
+
+  &::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+  }
+}
