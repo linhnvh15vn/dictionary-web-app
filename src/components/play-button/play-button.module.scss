@@ -1,0 +1,15 @@
+.play-button-container {
+  background: none;
+  border: none;
+  outline: none;
+
+  &:hover {
+    circle {
+      opacity: 1;
+    }
+
+    path {
+      fill: #fff;
+    }
+  }
+}
