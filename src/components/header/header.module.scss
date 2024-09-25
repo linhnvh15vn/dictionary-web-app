@@ -1,0 +1,13 @@
+.header-container {
+  padding-top: 56px;
+  padding-bottom: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
