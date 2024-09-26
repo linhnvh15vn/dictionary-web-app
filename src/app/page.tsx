@@ -2,9 +2,9 @@ import React from 'react';
 
 import classNames from 'classnames/bind';
 
-import styles from './page.module.scss';
 import PlayButton from '@/components/play-button';
 import SearchForm from '@/components/search-form';
+import styles from './page.module.scss';
 
 interface Props {
   searchParams: {
@@ -18,30 +18,42 @@ const fetchData = async (word: string) => {
   );
 
   const data = await response.json();
-  return data as Word[];
+  return data[0] as Word;
 };
 
 const cx = classNames.bind(styles);
 
 export default async function Page({ searchParams }: Props) {
   const data = await fetchData(searchParams.q);
+
   if (!data) {
     return <h1>Enter word</h1>;
   }
+
+  const handledData = {
+    ...data,
+    phonetics: data.phonetics.filter(
+      (phonetic) => phonetic.text && phonetic.audio !== '',
+    ),
+  };
+
+  console.log(handledData);
 
   return (
     <main className={cx('home-container')}>
       <SearchForm />
 
       <section className={cx('phonetic-section')}>
-        <h1 className={cx('word')}>{data[0].word}</h1>
-        <h2 className={cx('phonetic')}>{data[0].phonetic}</h2>
+        <h1 className={cx('word')}>{handledData.word}</h1>
+        <h2 className={cx('phonetic')}>
+          {handledData.phonetic || handledData.phonetics[0].text}
+        </h2>
         <div className={cx('btn')}>
-          <PlayButton audioSrc={data[0].phonetics[2].audio} />
+          <PlayButton audioSrc={handledData.phonetics[0].audio} />
         </div>
       </section>
 
-      {data[0].meanings.map((meaning) => (
+      {data.meanings.map((meaning) => (
         <section key={meaning.partOfSpeech} className={cx('meaning-section')}>
           <h2 className={cx('part-of-speech')}>{meaning.partOfSpeech}</h2>
           <div>
