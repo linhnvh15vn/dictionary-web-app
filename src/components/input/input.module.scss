@@ -9,8 +9,8 @@
   font-weight: 700;
   font-size: 20px;
   padding: 20px 24px;
-  border: 1px solid #f4f4f4;
-  background-color: #f4f4f4;
+  border: 1px solid var(--input);
+  background-color: var(--input);
   border-radius: 16px;
   width: 100%;
 
@@ -18,13 +18,17 @@
     color: rgba($color: #2d2d2d, $alpha: 0.25);
   }
 
+  .dark &::placeholder {
+    color: #fff;
+  }
+
   &:focus,
   &:focus-visible {
-    outline-color: var(--primary);
+    outline: 2px solid var(--primary);
   }
 
   &:invalid {
-    outline: 1px solid var(--destructive);
+    outline: 2px solid var(--destructive);
   }
 }
 

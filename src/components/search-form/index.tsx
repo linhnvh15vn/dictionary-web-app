@@ -1,16 +1,11 @@
 'use client';
 
 import React, { FormEvent, useCallback, useState } from 'react';
-
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Input from '@/components/input';
 
-interface Props {
-  // Add your component props here
-}
-
-export default function SearchForm(props: Props) {
+export default function SearchForm() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -34,7 +29,10 @@ export default function SearchForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input onChange={(e) => setWord(e.target.value)} />
+      <Input
+        onChange={(e) => setWord(e.target.value)}
+        placeholder="Search for any word…"
+      />
     </form>
   );
 }
