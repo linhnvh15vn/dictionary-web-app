@@ -37,8 +37,6 @@ export default async function Page({ searchParams }: Props) {
     ),
   };
 
-  console.log(handledData);
-
   return (
     <main className={cx('home-container')}>
       <SearchForm />
