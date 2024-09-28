@@ -28,6 +28,7 @@ export default function Input(props: Props) {
           />
         </svg>
       </button>
+      <p className={cx('error-message')}>Whoops, can&apos;t be empty...</p>
     </div>
   );
 }

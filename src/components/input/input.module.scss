@@ -29,6 +29,10 @@
 
   &:invalid {
     outline: 2px solid var(--destructive);
+
+    ~ .error-message {
+      display: block;
+    }
   }
 }
 
@@ -40,4 +44,12 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.error-message {
+  display: none;
+  position: absolute;
+  margin-top: 8px;
+  font-size: 20px;
+  color: var(--destructive);
 }

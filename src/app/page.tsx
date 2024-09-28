@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { notFound } from 'next/navigation';
 import classNames from 'classnames/bind';
 
 import PlayButton from '@/components/play-button';
-import SearchForm from '@/components/search-form';
 import styles from './page.module.scss';
 
 interface Props {
@@ -24,10 +24,14 @@ const fetchData = async (word: string) => {
 const cx = classNames.bind(styles);
 
 export default async function Page({ searchParams }: Props) {
+  if (!searchParams.q) {
+    return null;
+  }
+
   const data = await fetchData(searchParams.q);
 
   if (!data) {
-    return <h1>Enter word</h1>;
+    return notFound();
   }
 
   const handledData = {
@@ -39,8 +43,6 @@ export default async function Page({ searchParams }: Props) {
 
   return (
     <main className={cx('home-container')}>
-      <SearchForm />
-
       <section className={cx('phonetic-section')}>
         <h1 className={cx('word')}>{handledData.word}</h1>
         <h2 className={cx('phonetic')}>

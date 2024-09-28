@@ -31,7 +31,8 @@ export default function SearchForm() {
     <form onSubmit={handleSubmit}>
       <Input
         onChange={(e) => setWord(e.target.value)}
-        placeholder="Search for any word…"
+        placeholder="Search for any word..."
+        required
       />
     </form>
   );

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import Header from '@/components/header';
+import SearchForm from '@/components/search-form';
 import { ThemeProvider } from '@/providers/theme.provider';
 
 const geistSans = localFont({
@@ -31,6 +32,8 @@ export default function RootLayout({
       <ThemeProvider>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <Header />
+          <SearchForm />
+
           {children}
         </body>
       </ThemeProvider>
