@@ -10,7 +10,7 @@ export default function SearchForm() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [word, setWord] = useState('');
+  const [word, setWord] = useState(() => searchParams.get('q') || '');
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -30,6 +30,7 @@ export default function SearchForm() {
   return (
     <form onSubmit={handleSubmit}>
       <Input
+        value={word}
         onChange={(e) => setWord(e.target.value)}
         placeholder="Search for any word..."
         required
