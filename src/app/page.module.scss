@@ -36,18 +36,7 @@
   }
 
   .part-of-speech {
-    position: relative;
     font-style: italic;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      height: 1px;
-      width: 100%;
-      background-color: var(--border);
-      margin-left: 20px;
-    }
   }
 
   .meaning-list {
