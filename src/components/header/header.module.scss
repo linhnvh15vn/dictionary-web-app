@@ -14,4 +14,10 @@
   svg {
     stroke: var(--primary);
   }
+
+  .separator {
+    width: 1px;
+    height: 20px;
+    background-color: var(--border);
+  }
 }

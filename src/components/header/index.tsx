@@ -8,13 +8,41 @@ import classNames from 'classnames/bind';
 import Switch from '@/components/switch';
 import logo from '@/assets/images/logo.svg';
 import { useTheme } from '@/providers/theme.provider';
+import { useFont } from '@/providers/font-provider';
 
 import styles from './header.module.scss';
+import Dropdown from '@/components/dropdown';
 
 const cx = classNames.bind(styles);
 
+type KV = {
+  [key: string]: string;
+};
+
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const { font, setFont } = useFont();
+
+  const FONT_MAP: KV = {
+    Inter: 'Sans Serif',
+    Lora: 'Serif',
+    Inconsolata: 'Mono',
+  };
+
+  const options = [
+    {
+      label: 'Sans Serif',
+      value: 'Inter',
+    },
+    {
+      label: 'Serif',
+      value: 'Lora',
+    },
+    {
+      label: 'Monospace',
+      value: 'Inconsolata',
+    },
+  ];
 
   return (
     <header>
@@ -22,6 +50,12 @@ export default function Header() {
         <Image src={logo} alt="logo" />
 
         <div className={cx('header-mode-toggle')}>
+          <Dropdown
+            options={options}
+            value={FONT_MAP[font]}
+            onSelectItem={setFont}
+          />
+          <div className={cx('separator')} />
           <Switch onChange={toggleTheme} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
