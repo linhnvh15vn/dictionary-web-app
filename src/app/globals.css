@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/lora/Lora-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/lora/Lora-Italic-VariableFont_wght.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('/fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf');
+}
+
 :root {
   --background: #ffffff;
   --foreground: #2d2d2d;
@@ -33,7 +54,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Lora', 'Inconsolata';
   max-width: 736px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
