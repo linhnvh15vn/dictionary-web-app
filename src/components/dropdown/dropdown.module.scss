@@ -7,6 +7,10 @@
   &:focus-visible {
     outline: none;
   }
+
+  @media screen and (max-width: 640px) {
+    font-size: 14px;
+  }
 }
 
 .dropdown-selected {

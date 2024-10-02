@@ -23,9 +23,16 @@ export const FontContext = createContext<FontContextProps>({
 });
 
 export function FontProvider({ children }: FontProviderProps) {
-  const [font, setFont] = useState(
-    () => localStorage.getItem('font') ?? 'Inter',
-  );
+  const [font, setFont] = useState('');
+
+  useEffect(() => {
+    const storeFont = localStorage.getItem('font');
+    if (storeFont) {
+      setFont(storeFont);
+    }
+
+    setFont('Inter');
+  }, []);
 
   useEffect(() => {
     document.body.style.fontFamily = font;
